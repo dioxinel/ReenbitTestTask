@@ -6,9 +6,18 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
+    "faker": "^5.5.3",
+    "lorem-ipsum": "^2.0.3",
+    "mobx": "^6.3.2",
+    "mobx-react": "^7.2.0",
+    "mobx-state-tree": "^5.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-id-generator": "^3.0.1",
+    "react-modal": "^3.14.2",
     "react-scripts": "4.0.3",
+    "sass": "^1.34.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

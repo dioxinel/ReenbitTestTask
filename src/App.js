@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { LeftBar } from './components/LeftBar/LeftBar.js';
+import { RightBar } from './components/RightBar/RightBar.js';
+import { createStore, Provider } from './stores/createStore.js';
+import Modal from 'react-modal';
 
+const store = createStore();
+store.bootstrap();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Provider value={store}>
+        <LeftBar />
+        <RightBar />
+      </Provider>
+    </main>
   );
 }
+
+Modal.setAppElement('#modalRoot')
 
 export default App;

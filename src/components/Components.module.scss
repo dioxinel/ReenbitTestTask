@@ -1,0 +1,15 @@
+.avatarContainer {
+ position: relative;
+
+ .tick {
+  position: absolute;
+  top: 28px;
+  left: 35px;
+ }
+}
+.avatar {
+ display: inline-block;
+ border-radius: 50%;
+ height: 50px;
+ width: 50px;
+}

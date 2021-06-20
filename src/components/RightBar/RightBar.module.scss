@@ -1,0 +1,223 @@
+@import "src/nullStyle.scss";
+
+.RightBar {
+ width: 60%;
+ height: 690px;
+ overflow-y: scroll;
+ display: inline-block;
+ position: relative;
+
+ &::-webkit-scrollbar {
+  width: 0;
+ }
+}
+
+.hideAllButton {
+ height: 40px;
+ font-size: 20px;
+ border: 1px #888686 solid;
+ border-radius: 5px;
+}
+
+.selectChatToStartMessaging {
+ display: inline-block;
+ width: 265px;
+ position: fixed;
+ top: 45%;
+ left: 60%;
+ background-color: #3c4252;
+ color: white;
+ align-items: center;
+ padding-left: 20px;
+ line-height: 30px;
+ border-radius: 15px;
+ cursor: default;
+}
+
+.header {
+ background-color: #f5f5f5;
+ display: flex;
+ align-items: center;
+ position: fixed;
+ width: 100%;
+ height: 80px;
+ padding-left: 20px;
+ border-bottom: 2px solid #cfcdcd;
+
+ .userFullName {
+  margin-left: 30px;
+  font-size: 25px;
+ }
+}
+
+.messageList {
+ margin-top: 80px;
+ margin-bottom: 120px;
+
+ ul {
+  display: flex;
+  flex-direction: column;
+
+  li {
+   width: 98%;
+  }
+ }
+
+ .ownMessage {
+  display: flex;
+  margin-right: 15px;
+  align-self: flex-end;
+  margin-bottom: 30px;
+
+  .messageTextInfo {
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   align-items: flex-end;
+  }
+
+  .text {
+   background-color: #dfdfdf;
+   display: inline-block;
+   line-height: 20px;
+   max-width: 80%;
+   padding: 20px;
+   border-radius: 30px;
+  }
+
+  .date {
+   font-size: 12px;
+   margin-right: 10px;
+   margin-top: 10px;
+   color: #888686;
+  }
+ }
+
+ .notOwnMessage {
+  display: flex;
+  margin-left: 15px;
+  margin-bottom: 30px;
+
+  .avatar {
+   display: inline-block;
+   border-radius: 50%;
+   height: 50px;
+   width: 50px;
+   margin-top: 15px;
+  }
+
+  .text {
+   background-color: #3e4256;
+   display: inline-block;
+   line-height: 20px;
+   color: #ffffff;
+   max-width: 80%;
+   padding: 20px;
+   margin-left: 15px;
+   border-radius: 30px;
+  }
+
+  .date {
+   font-size: 12px;
+   margin-left: 35px;
+   margin-top: 10px;
+   color: #888686;
+  }
+ }
+}
+
+.messageInput {
+ background-color: #f5f5f5;
+ position: fixed;
+ width: 100%;
+ height: 120px;
+ bottom: 0px;
+ border-top: 2px solid #cfcdcd;
+
+ .messageInputContainer {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #cfcdcd;
+  border-radius: 20px;
+  display: flex;
+  padding-left: 15px;
+  height: 60px;
+  margin: 30px;
+  width: 55%;
+
+  input {
+   font-size: 15px;
+   line-height: 31px;
+   margin-top: 12px;
+   margin-left: 19px;
+   margin-bottom: 16px;
+   width: 92%;
+   line-height: 20px;
+   font-size: 20px;
+   color: #7b7b7b;
+  }
+ }
+
+ .sendMessageIcon {
+  cursor: pointer;
+ }
+}
+
+.modal {
+ display: inline-block;
+}
+
+.overlay {
+ transform: translate(-50%, -50%);
+ display: flex;
+ flex-direction: column-reverse;
+ position: fixed;
+ height: 100%;
+ width: 400px;
+ left: 85%;
+ top: 50%;
+ z-index: 3;
+}
+
+.notificationList {
+ display: flex;
+ flex-direction: column-reverse;
+ justify-content: flex-end;
+}
+
+.notificationItem {
+ display: flex;
+ background-color: white;
+ height: 100px;
+ align-items: center;
+ justify-content: space-between;
+ padding: 15px;
+ border: 1px #888686 solid;
+ border-radius: 5px;
+
+ img {
+  margin-right: 15px;
+  cursor: pointer;
+ }
+
+ .messageText {
+  width: 200px;
+  color: #7b7b7b;
+  cursor: pointer;
+ }
+
+ .timeCloseNotification {
+  display: flex;
+  margin-bottom: 70px;
+
+  div {
+   margin-right: 5px;
+   color: #7b7b7b;
+   cursor: pointer;
+  }
+
+  svg {
+   cursor: pointer;
+  }
+ }
+}
