@@ -1,12 +1,11 @@
 import { observer } from 'mobx-react';
 import React, { useEffect } from 'react';
 import { useStore } from '../../stores/createStore';
-import { Chat } from './Chat';
+import { Chat } from './Chat/Chat';
 import { Header } from './Header';
-import { MessageInput } from './MessageInput';
-import Modal from 'react-modal';
+import { MessageInput } from './Chat/MessageInput';
 import s from './RightBar.module.scss'
-import { NotificationListItem } from './NotificationListItem';
+import { NotificationList } from './Notification/NotificationList';
 
 export const RightBar = observer(() => {
   const store = useStore()
@@ -14,21 +13,16 @@ export const RightBar = observer(() => {
   useEffect(()=>{
     const rightBar = document.getElementById('RightBar');
     setTimeout(()=>{rightBar.scrollTo({top: rightBar.scrollHeight})}, 10)
-  }, [store.activeChat])
+  }, [store.chats.activeChat])
   
-  if (!store.activeChat) {
+  if (!store.chats.activeChat) {
     return(
       <div className={s.RightBar} id={'RightBar'}>
         <div className={s.selectChatToStartMessaging}>
           Select a chat to start messaging
         </div>
-      </div>
-      
+      </div>   
       )
-  }
-
-  function closeModal() {
-    store.clearNotifications()
   }
 
   return(
@@ -38,18 +32,7 @@ export const RightBar = observer(() => {
         <Chat />
         <MessageInput />
       </div>
-      <Modal 
-        isOpen={!!store.notifications.length} 
-        className={s.modal}
-        overlayClassName={s.overlay}
-        >
-        <div className={s.notificationList}>
-        {store.notifications.map((item) => {
-          return (<NotificationListItem item={item} key={item.id}/>)
-        })}
-        <button onClick={closeModal} className={s.hideAllButton}>Hide all</button>
-      </div>    
-      </Modal>
+      <NotificationList />
     </>
   )
 })

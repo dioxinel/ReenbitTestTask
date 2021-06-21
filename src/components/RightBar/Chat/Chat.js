@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { useStore } from '../../stores/createStore';
+import { useStore } from '../../../stores/createStore';
 import { Message } from './Message';
-import s from './RightBar.module.scss';
+import s from '../RightBar.module.scss';
 
 export const Chat = observer(() => {
   const store = useStore()
-  const chat = store.activeChat
+  const chat = store.chats.activeChat
   return(
   <div className={s.messageList}>
     <ul>

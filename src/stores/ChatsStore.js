@@ -1,10 +1,14 @@
-import { types } from 'mobx-state-tree';
+import { getRoot, types } from 'mobx-state-tree';
+import { fetchRandomJoke } from '../Api';
 import { generateChat } from '../GeneratorRandomData';
 import { ChatModel } from './ChatModel';
+import { asyncModel } from './utils';
 
 export const ChatsStore = types
   .model('ChatsStore', {
     items: types.array(ChatModel),
+    activeChat: types.maybe(types.reference(ChatModel)),
+    addMessage: asyncModel(addMessage),
 
     searchChatKeyWords: types.maybe(types.string)
   })
@@ -29,8 +33,42 @@ export const ChatsStore = types
 
     setSearchChatKeyWords(value) {
       store.searchChatKeyWords = value;
-    }
+    },
+
+    activateChat(chat) {
+      store.activeChat = chat
+    },
+
+    activateChatById(id) {
+      store.activeChat = store.items[id]
+    },
+
+    addResponse(text, chatId) {
+      const chatToResponse = store.items[chatId]
+      chatToResponse.messages = [...chatToResponse.messages, {text, owner: false, createdAt: Date.now()}]
+      const rootStore = getRoot(store)
+      rootStore.notifications.createNotification(text, chatId, Date.now())
+    },
+
+    addOwnMessage(text) {
+      store.activeChat.messages = [...store.activeChat.messages, 
+          {text: text, owner: true, createdAt: Date.now() }]
+      store.addMessage.run()
+    },
   }));
+
+  function addMessage() {
+    return (
+      async function addMessageFlow(flow, store, root) {
+        const chatId = store.activeChat.id
+        const res = await fetchRandomJoke()
+        
+        setTimeout(() => {
+          store.addResponse(res.data.value, chatId)
+        }, 13000)
+      }
+    )
+  }
 
 function compareTime(a, b) {
   const timeA = a.messages[a.messages.length - 1].createdAt

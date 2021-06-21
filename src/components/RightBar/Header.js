@@ -7,8 +7,8 @@ export function Header() {
   const store = useStore()
   return(
     <div className={s.header}>
-      <AvatarWithTick avatarLink={store.activeChat.user.avatar} />
-      <div className={s.userFullName}>{store.activeChat.user.fullName}</div>
+      <AvatarWithTick avatarLink={store.chats.activeChat.user.avatar} />
+      <div className={s.userFullName}>{store.chats.activeChat.user.fullName}</div>
     </div>
     
   )

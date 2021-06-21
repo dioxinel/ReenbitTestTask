@@ -4,5 +4,4 @@ export const UserModel = types.model('UserModel', {
   id: types.identifierNumber,
   fullName: types.string,
   avatar: types.maybeNull(types.string),
-}).actions((store) => ({
-}));
+})

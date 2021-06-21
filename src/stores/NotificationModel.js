@@ -5,6 +5,4 @@ export const NotificationModel = types.model('NotificationModel', {
   chatId: types.number,
   createdAt: types.number,
   id: types.identifierNumber,
-}).actions((store) => ({
-
-}));
+})

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Avatar } from '../Avatar';
+import { Avatar } from '../../Avatar';
 import { MessageCreatedAtDate } from './MessageCreatedAtDate';
-import s from './RightBar.module.scss';
+import s from '../RightBar.module.scss';
 
 export const Message = ({item, avatar}) => {
   let className = s.ownMessage

@@ -6,6 +6,4 @@ export const ChatModel = types.model('ChatModel', {
   id: types.identifierNumber,
   user: UserModel,
   messages: types.optional(types.array(MessageModel), [])
-}).actions((store) => ({
-
-}));
+})
