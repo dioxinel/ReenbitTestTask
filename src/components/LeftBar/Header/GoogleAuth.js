@@ -8,7 +8,10 @@ export function GoogleAuth() {
   const store = useStore()
   const responseGoogle = (response) => {
     const userData = response.profileObj;
-    store.viewerStore.login(Number(userData.googleId), userData.name, userData.imageUrl)
+    if (userData) {
+      store.viewerStore.login(Number(userData.googleId), userData.name, userData.imageUrl)
+    }
+    
   }
 
   function handleClick() {
