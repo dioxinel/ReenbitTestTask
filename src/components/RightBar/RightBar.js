@@ -9,6 +9,7 @@ import { NotificationList } from './Notification/NotificationList';
 
 export const RightBar = observer(() => {
   const store = useStore()
+  const heightStyle = {height: document.querySelector('body').clientHeight - 10 + 'px'}
 
   useEffect(()=>{
     const rightBar = document.getElementById('RightBar');
@@ -17,7 +18,7 @@ export const RightBar = observer(() => {
   
   if (!store.chats.activeChat) {
     return(
-      <div className={s.RightBar} id={'RightBar'}>
+      <div className={s.RightBar} id={'RightBar'} style={heightStyle}>
         <div className={s.selectChatToStartMessaging}>
           Select a chat to start messaging
         </div>
@@ -27,7 +28,7 @@ export const RightBar = observer(() => {
 
   return(
     <>
-      <div className={s.RightBar} id={'RightBar'}>
+      <div className={s.RightBar} id={'RightBar'} style={heightStyle}>
         <Header />
         <Chat />
         <MessageInput />

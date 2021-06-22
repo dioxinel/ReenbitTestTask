@@ -5,7 +5,7 @@ import s from './LeftBar.module.scss'
 
 export function LeftBar() {
   return (
-    <div className={s.LeftBar}>
+    <div className={s.LeftBar} style={{height: document.querySelector('body').clientHeight - 10 + 'px'}}>
       <LeftHeader />
       <Chats />
     </div>
